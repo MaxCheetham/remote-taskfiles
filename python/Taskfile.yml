@@ -1,0 +1,23 @@
+version: '3'
+
+tasks:
+  ###
+  # CI
+  ###
+  ci-style-check:
+    cmds:
+      - ruff check .
+      - ruff format .
+
+  ci-type-check:
+    cmds:
+      - mypy .
+
+  run-ci:
+    sources:
+      - src/**/*.py
+      - tests/**/*.py
+    cmds:
+      - task: ci-style-check
+      - task: ci-type-check
+      - poetry lock --check --quiet
