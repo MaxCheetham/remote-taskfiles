@@ -5,15 +5,18 @@ tasks:
   # CI
   ###
   ci-style-check:
+    desc: runs both ruff check and ruff format on the current WD
     cmds:
       - ruff check .
       - ruff format .
 
   ci-type-check:
+    desc: runs mypy type checking on the current WD
     cmds:
       - mypy .
 
-  run-ci:
+  ci:
+    desc: Runs all CI checks [linting, formatting, type checking, and lock file integrety]
     sources:
       - src/**/*.py
       - tests/**/*.py
